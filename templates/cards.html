@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% block content %}
+<form class="settings-form" method="POST">
+  <div class="row">
+
+    <div class="col-md-8">
+      <div class="mb-3 row">
+
+        <div class="col-md-5">
+          <select class="form-select" name="user_id" required>
+            <option selected disabled value="">Select User ID</option>
+            {% for user_id in user_ids %}
+            <option value="{{ user_id[0] }}">{{ user_id[1] }}</option>
+            {% endfor %}
+          </select>
+        </div>
+		  <div class="col-md-5">
+          <select class="form-select" name="user_plan" required>
+            <option selected disabled value="">Select Card Plan</option>
+
+            <option value="BASIC">Basic</option>
+			   <option value="GOLD">Gold</option>
+
+          </select>
+        </div>
+
+        <div class="col-md-2">
+          <button type="submit" class="btn app-btn-primary">Assign Card</button>
+        </div>
+      </div>
+
+    </div><!--//col-md-6-->
+  </div><!--//row-->
+</form>
+{% endblock %}
+
+
+{% block table %}
+<table id="myTable" class="table app-table-hover mb-0 text-left">
+											  <thead>
+												<tr>
+												  <th>id</th>
+												  <th>Card no</th>
+												  <th>Assigned to</th>
+												  <th>Subscription Date</th>
+												  <th>Plan</th>
+												  <th>Role</th>
+												</tr>
+											  </thead>
+											  <tbody>
+											  {% for i in usersData %}
+												<tr>
+												  <td>{{i[0]}}</td>
+												  <td>{{i[1]}}</td>
+												  <td>{{i[2]}}</td>
+												  <td><span>{{i[3]}}</span></td>
+												  <td><span class="badge bg-success">{{i[4]}}</span></td>
+												  <td>{{i[5]}}</td>
+												</tr>
+												{% endfor %}
+											  </tbody>
+										</table>
+{% endblock %}

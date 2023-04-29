@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block table %}
+<table id="myTable" class="table app-table-hover mb-0 text-left">
+											  <thead>
+												<tr>
+												  <th>id</th>
+												  <th>User</th>
+												  <th>Merchant</th>
+												  <th>Card no</th>
+													<th>Bill Amount</th>
+													<th>Discount</th>
+													<th>Timestamp</th>
+
+												</tr>
+											  </thead>
+											  <tbody>
+											  {% for i in dataDisplay %}
+												<tr>
+													<td>{{i[0]}}</td>
+													<td>{{i[1]}}</td>
+													<td>{{i[2]}}</td>
+													<td>{{i[3]}}</td>
+													<td>{{i[4]}}</td>
+													<td>{{i[5]}}</td>
+													<td>{{i[6]}}</td>
+												</tr>
+												{% endfor %}
+
+										</table>
+{% endblock %}

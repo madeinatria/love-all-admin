@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<form class="settings-form" method="POST">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="mb-3 row">
+        <label class="col-md-4 col-form-label"><strong>Merchant Name<sup class="text-danger">*</sup></strong></label>
+        <div class="col-md-8">
+          <input type="text" class="form-control" name="merchant_name" required>
+        </div>
+      </div>
+<div class="mb-3 row">
+    <label class="col-md-4 col-form-label"><strong>Location<sup class="text-danger">*</sup></strong></label>
+    <div class="col-md-8">
+        <select class="form-control" name="location" required>
+            <option value="" selected disabled>Select location</option>
+            <option value="Bangalore Urban">Bangalore Urban</option>
+            <option value="Bangalore Rural">Bangalore Rural</option>
+        </select>
+    </div>
+</div>
+    </div><!--//col-md-6-->
+    <div class="col-md-6">
+      <div class="mb-3 row">
+        <label class="col-md-4 col-form-label"><strong>User ID<sup class="text-danger">*</sup></strong></label>
+        <div class="col-md-8">
+          <select class="form-select" name="user_id" required>
+            <option selected disabled value="">Select User ID</option>
+            {% for user_id in user_ids %}
+            <option value="{{ user_id[0] }}">{{ user_id[1] }}</option>
+            {% endfor %}
+          </select>
+        </div>
+      </div>
+      <div class="mb-3 row text-end">
+        <div class="col-md-4"></div>
+        <div class="col-md-8">
+          <button type="submit" class="btn app-btn-primary">Submit</button>
+        </div>
+      </div>
+    </div><!--//col-md-6-->
+  </div><!--//row-->
+</form>
+
+{% endblock %}
+
+
+{% block table %}
+<table id="myTable" class="table app-table-hover mb-0 text-left">
+											  <thead>
+												<tr>
+												  <th>id</th>
+												  <th>Merchant Name</th>
+												  <th>Location</th>
+												  <th>POC</th>
+												  <th>Email</th>
+                                                  <th>Member from</th>
+												</tr>
+											  </thead>
+											  <tbody>
+											  {% for i in activeMerchants %}
+												<tr>
+												  <td>{{i['id']}}</td>
+                                                  <td>{{i['merchant_name']}}</td>
+                                                  <td>{{i['location']}}</td>
+												  <td>{{i['User']['first_name']}} {{i['User']['last_name']}}</td>
+												  <td>{{i['User']['email']}}</td>
+
+												  <td>{{i['created_at']}}</td>
+												</tr>
+												{% endfor %}
+
+										</table>
+{% endblock %}

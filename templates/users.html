@@ -1,0 +1,94 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<form method="POST" class="settings-form">
+									<div class="row">
+    <div class="col-md-6">
+        <div class="mb-3 row">
+            <label for="setting-input-1" class="col-md-4 col-form-label"><strong>First Name<sup class="text-danger">*</sup></strong></label>
+            <div class="col-md-8">
+                <input type="text" class="form-control" id="setting-input-1" name="first_name" value="" required>
+            </div>
+        </div>
+        <div class="mb-3 row">
+            <label for="setting-input-2" class="col-md-4 col-form-label"><strong>Last Name<sup class="text-danger">*</sup></strong></label>
+            <div class="col-md-8">
+                <input type="text" class="form-control" id="setting-input-2" name="last_name" value="" required>
+            </div>
+        </div>
+        <div class="mb-3 row">
+            <label for="setting-input-3" class="col-md-4 col-form-label"><strong>Email<sup class="text-danger">*</sup></strong></label>
+            <div class="col-md-8">
+                <input type="email" class="form-control" id="setting-input-3" name="email" value="" required>
+            </div>
+        </div>
+
+    </div><!--//col-md-6-->
+    <div class="col-md-6">
+		<div class="mb-3 row">
+            <label for="setting-input-4" class="col-md-4 col-form-label"><strong>Password<sup class="text-danger">*</sup></strong></label>
+            <div class="col-md-8">
+                <input type="password" class="form-control" id="setting-input-4" name="password" value="" required>
+            </div>
+        </div>
+        <div class="mb-3 row">
+            <label for="setting-input-7" class="col-md-4 col-form-label"><strong>Confirm Password<sup class="text-danger">*</sup></strong></label>
+            <div class="col-md-8">
+                <input type="password" class="form-control" id="setting-input-7" name="confirm_password" value="" required>
+            </div>
+        </div>
+        <div class="mb-3 row">
+            <label for="setting-input-6" class="col-md-4 col-form-label"><strong>Role<sup class="text-danger">*</sup></strong></label>
+            <div class="col-md-8">
+                <select class="form-select" id="setting-input-6" name="role" required>
+                    <option value="">Select Role</option>
+                    <option value="merchant">Merchant</option>
+                    <option value="admin">Admin</option>
+                    <option value="user">User</option>
+                </select>
+            </div>
+        </div>
+        <div class="mb-3 row text-end">
+            <div class="col-md-4"></div>
+            <div class="col-md-8">
+                <form method="post">
+                    <button type="submit" class="btn app-btn-primary">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div></div></form>
+
+{% endblock %}
+
+
+{% block table %}
+<table id="myTable" class="table app-table-hover mb-0 text-left">
+											  <thead>
+												<tr>
+												  <th>id</th>
+												  <th>Full name</th>
+												  <th>email</th>
+												  <th>role</th>
+												  <th>Member from</th>
+												</tr>
+											  </thead>
+											  <tbody>
+											  {% for i in usersData %}
+												<tr>
+												  <td>{{i['id']}}</td>
+												  <td>{{i['first_name']}} {{i['last_name']}}</td>
+												  <td>{{i['email']}}</td>
+                                                    {% if i['role']=="merchant" %}
+                                                    <td><span class="badge bg-success">Merchant</span></td>
+                                                    {% elif i['role'] == "user" %}
+                                                    <td><span class="badge bg-warning">User</span></td>
+                                                    {% else %}
+                                                    <td><span class="badge bg-danger">{{i['role']}}</span></td>
+                                                    {% endif %}
+
+												  <td>{{i['created_at']}}</td>
+												</tr>
+												{% endfor %}
+
+										</table>
+{% endblock %}

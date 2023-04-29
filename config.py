@@ -1,0 +1,3 @@
+access_token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2ODExMTQwMDYsInVzZXJfZW1haWwiOiJhZG1pbkBhZG1pbi5jb20iLCJ1c2VyX2lkIjo0LCJ1c2VyX3JvbGUiOiJhZG1pbiJ9.BXFW-aYM0S5ba6T7SxxYiJhRmd0C9r9uhPmJxd9J5_w"
+atria_email = "chanceatria@gmail.com"
+atria_password = "Chance@Atria123"
